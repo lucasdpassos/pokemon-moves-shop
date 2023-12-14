@@ -17,10 +17,13 @@ export const cartSlice = createSlice({
         (power) => power.name !== itemToRemove
       );
     },
+    setNewItemAdded: (state, action) => {
+        state.newItemAdded = action.payload;
+      },
   },
 });
 
-export const { add, remove } = cartSlice.actions;
+export const { add, remove,  setNewItemAdded } = cartSlice.actions;
 
 export const selectPowers = (state) => state.powers.value;
 

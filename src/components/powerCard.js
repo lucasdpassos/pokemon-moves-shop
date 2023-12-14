@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { add, selectPowers, remove } from '../features/cartSlice';
+import { add, setNewItemAdded } from '../features/cartSlice';
 
 
   
@@ -18,7 +18,8 @@ const PowerCard = ({ moves }) => {
 
   const handleAddPower = () => {
     console.log(moves)
-    dispatch(add(moves));
+    dispatch(add(moves))
+    dispatch(setNewItemAdded(true));
   };
 
   return (

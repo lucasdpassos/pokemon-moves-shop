@@ -5,14 +5,22 @@ import PowerCard from '../components/powerCard';
 import PowerCardSkeleton from '../components/powerCardSkeleton';
 import CartComponent from './CartComponent';
 import SearchIcon from '@mui/icons-material/Search';
+import { setNewItemAdded } from '../features/cartSlice';
+import SnackbarComponent from './powerAddedSnackbar';
 
 const UserInfo = () => {
   const dispatch = useDispatch();
   const pokemon = useSelector(selectPokemon);
   const [inputPokemon, setInputPokemon] = useState('');
+  const newItemAdded = useSelector((state) => state.cart.newItemAdded);
+
 
   const handleSearch = () => {
     dispatch(fetchPokemon(inputPokemon));
+  };
+
+  const handleSnackbarClose = () => {
+    dispatch(setNewItemAdded(false)); // Reset the flag when Snackbar is closed
   };
 
   const renderMoveGroups = () => {
@@ -69,6 +77,11 @@ const UserInfo = () => {
             <h3>Moves:</h3>
             </div>
             {renderMoveGroups()}
+            <SnackbarComponent
+        open={newItemAdded}
+        onClose={handleSnackbarClose}
+        message="Item adicionado com sucesso"
+      />
           </div>
         ) : (
           <p>Nenhum Pokémon encontrado.</p>
