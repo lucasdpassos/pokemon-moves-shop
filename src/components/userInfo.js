@@ -70,7 +70,7 @@ const UserInfo = () => {
         {pokemon.name && !pokemon.pokemonLoading ? (
           <div>
             <div className='flex flex-col align-middle mx-auto justify-center items-center'>
-            <img className='animate-bounce max-w-[60px] max-h-14' src={pokemon.avatar} alt='poke' />
+            <img className='animate-bounce max-w-[120px] max-h-56' src={pokemon.avatar} alt='poke' />
             <p>Name: {pokemon.name}</p>
             <p>ID: {pokemon.id}</p>
             <p>Location Area Encounters: {pokemon.locationAreaEncounters}</p>
